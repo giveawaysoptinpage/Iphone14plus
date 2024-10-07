@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opt-In Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90%vh;
+            background-color: #f0f0f0;
+        }
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #3569ef;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            padding: 15px;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #3b67d9;
+        }
+    </style>
+    <script>
+        function submitForm(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Collect the form data
+            const formData = new FormData(document.getElementById('optInForm'));
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+
+            // Send the data to Google Sheets
+            fetch('https://script.google.com/macros/s/AKfycbz7I6liZzwNfHOIJB-2D4Sr0L04LnxYJTIHbfBmGyVmqoJOQuVnQkODZyvOJWLTbeTHCg/exec', {  // Replace with your Google Apps Script URL
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Redirect to the thank you page
+                    window.location.href = 'https://rileymarker.com/Winiphone14plusnow'; // Replace with your desired URL
+                } else {
+                    alert('There was a problem with your submission.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was a problem with your submission.');
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="form-container">
+        <h3>Enter your real information we can use to contact you</h3>
+        <form id="optInForm" onsubmit="submitForm(event)">
+            <input type="text" name="firstName" placeholder="First Name" required><br>
+            <input type="text" name="lastName" placeholder="Last Name" required><br>
+            <input type="email" name="email" placeholder="Email" required><br>
+            <select name="gender" required>
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select><br>
+            <input type="text" name="city" placeholder="City" required><br>
+            <select name="country" required>
+                <option value="">Select Country</option>
+                <option value="Afghanistan">Afghanistan</option>
+                <option value="Albania">Albania</option>
+                <option value="Algeria">Algeria</option>
+                <option value="Andorra">Andorra</option>
+                <option value="Angola">Angola</option>
+                <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+                <option value="Argentina">Argentina</option>
+                <option value="Armenia">Armenia</option>
+                <option value="Australia">Australia</option>
+                <option value="Austria">Austria</option>
+                <option value="Azerbaijan">Azerbaijan</option>
+                <!-- Continue the list of countries as needed -->
+            </select><br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
