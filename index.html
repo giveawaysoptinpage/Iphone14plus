@@ -10,7 +10,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 80vh;
+            height: 90%vh;
             background-color: #f0f0f0;
         }
         .form-container {
@@ -52,7 +52,7 @@
             });
 
             // Send the data to Google Sheets
-            fetch('https://script.google.com/macros/s/AKfycbzZrtm-PWJoOv3WzCFyesIMw0zM8f0LY19JqZoQmQ4mXPtDqB56ehQ_6xdQZ8E9UXd7hQ/exec', {
+            fetch('https://script.google.com/macros/s/AKfycbz7I6liZzwNfHOIJB-2D4Sr0L04LnxYJTIHbfBmGyVmqoJOQuVnQkODZyvOJWLTbeTHCg/exec', {  // Replace with your Google Apps Script URL
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: {
