@@ -10,7 +10,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 90hv;
+            height: 110vh;
             background-color: #f0f0f0;
         }
         .form-container {
@@ -44,27 +44,33 @@
         function submitForm(event) {
             event.preventDefault(); // Prevent the default form submission
 
-            fetch('https://script.google.com/macros/s/AKfycbwKwYOspiqDrSlkwv9dpI7ZnKnaWtj4fK_1wjC7jFBJQgphmbyDFJsaxTCMZ6LQmRPj/exec', {  // Replace with your Google Apps Script URL
-    method: 'POST',
-    body: JSON.stringify(data),
-    headers: {
-        'Content-Type': 'application/json'
-    }
-})
-.then(response => response.json())  // Parse the JSON response
-.then(data => {
-    if (data.status === 'success') {
-        // Redirect to the thank you page
-        window.location.href = 'https://rileymarker.com/Winiphone14plusnow'; // Replace with your desired URL
-    } else {
-        alert('There was a problem with your submission.');
-    }
-})
-.catch(error => {
-    console.error('Error:', error);
-    alert('There was a problem with your submission.');
-});
+            // Collect the form data
+            const formData = new FormData(document.getElementById('optInForm'));
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
 
+            // Send the data to Google Sheets
+            fetch('https://script.google.com/macros/s/AKfycbwKwYOspiqDrSlkwv9dpI7ZnKnaWtj4fK_1wjC7jFBJQgphmbyDFJsaxTCMZ6LQmRPj/exec', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Redirect to the thank you page
+                    window.location.href = 'https://rileymarker.com/Winiphone14plusnow'; // Replace with your desired URL
+                } else {
+                    alert('There was a problem with your submission.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was a problem with your submission.');
+            });
         }
     </script>
 </head>
