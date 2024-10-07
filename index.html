@@ -10,7 +10,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 90%vh;
+            height: 90hv;
             background-color: #f0f0f0;
         }
         .form-container {
@@ -44,14 +44,7 @@
         function submitForm(event) {
             event.preventDefault(); // Prevent the default form submission
 
-            // Collect the form data
-            const formData = new FormData(document.getElementById('optInForm'));
-            const data = {};
-            formData.forEach((value, key) => {
-                data[key] = value;
-            });
-
-            fetch('https://script.google.com/macros/s/AKfycbxg11YuxuJ_HKGD0zeZKlwi7CH6F_FTlRJMPm242olDbXYCQu5NHCoMmudTh13ZF5gFRg/exec', {  // Replace with your Google Apps Script URL
+            fetch('https://script.google.com/macros/s/AKfycbwKwYOspiqDrSlkwv9dpI7ZnKnaWtj4fK_1wjC7jFBJQgphmbyDFJsaxTCMZ6LQmRPj/exec', {  // Replace with your Google Apps Script URL
     method: 'POST',
     body: JSON.stringify(data),
     headers: {
