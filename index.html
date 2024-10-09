@@ -41,34 +41,34 @@
         }
     </style>
     <script>
-    function submitForm(event) {
-        event.preventDefault();
+  function submitForm(event) {
+    event.preventDefault();
 
-        const formData = new FormData(document.getElementById('optInForm'));
-        const data = {};
-        formData.forEach((value, key) => {
-            data[key] = value;
-        });
+    const formData = new FormData(document.getElementById('optInForm'));
+    const data = {};
+    formData.forEach((value, key) => {
+        data[key] = value;
+    });
 
-        fetch('https://script.google.com/macros/s/AKfycbyY-BmIAcix4LuHuxaFGKJvgxBhbNV8lw9QGUlavjVraVurNPi6Ugk3y-tpElrh51Sq/exec', {
-            method: 'POST',
-            body: new URLSearchParams(data),
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
-        })
-        .then(response => {
-            if (response.ok) {
-                window.location.href = 'https://rileymarker.com/Winiphone14plusnow'; // Update with your URL
-            } else {
-                alert('There was a problem with your submission.');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
+    fetch('https://script.google.com/macros/s/AKfycbxsWXohAexidIaifb_L-zhLeB_2-F3P7Cfi0HDubJwrnBUk2d-liTyMax-dWvEd8gBjnA/exec', {
+        method: 'POST',
+        body: new URLSearchParams(data),
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            window.location.href = 'https://rileymarker.com/Winiphone14plusnow'; // Update with your URL
+        } else {
             alert('There was a problem with your submission.');
-        });
-    }
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('There was a problem with your submission.');
+    });
+  }
 </script>
 </head>
 <body>
