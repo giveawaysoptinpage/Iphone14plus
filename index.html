@@ -10,7 +10,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 110vh;
+            height: 90vh;
             background-color: #f0f0f0;
         }
         .form-container {
@@ -50,7 +50,7 @@
         data[key] = value;
     });
 
-    fetch('https://script.google.com/macros/s/AKfycbxsWXohAexidIaifb_L-zhLeB_2-F3P7Cfi0HDubJwrnBUk2d-liTyMax-dWvEd8gBjnA/exec', {
+    fetch('https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec', {
         method: 'POST',
         body: new URLSearchParams(data),
         headers: {
