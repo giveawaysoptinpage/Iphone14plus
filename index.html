@@ -50,13 +50,12 @@
         data[key] = value;
     });
 
-    fetch('https://script.google.com/macros/s/AKfycbznJgNuMva39ZP1ecq58WlpluOP_GK_NsJ1v8RPS_W3pRds9vIJr_YrXq-SR06_67xZ/exec', {
+    fetch('https://script.google.com/macros/s/AKfycbyiF69fhuiy3aNSWf3_EgC6aYPpJe6U42LCp0RxHQmnEQWxpL1L9sJjhFsULR2gun4r/exec', {
     method: 'POST',
     body: new URLSearchParams(data),
     headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
-    },
-    mode: 'cors'
+    }
 })
     .then(response => {
         if (response.ok) {
