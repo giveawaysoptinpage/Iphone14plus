@@ -44,38 +44,23 @@
         function handleFormSubmit(event) {
             event.preventDefault(); // Prevent the default form submission
 
-            // Perform the actual form submission by creating a new form element
-            const form = document.createElement('form');
-            form.action = "https://docs.google.com/forms/d/e/1FAIpQLSdVwup9Zy2PVfjHm7C1HTA_uHs6jxbByM5_KiduOXDEW7fR1w/formResponse"; // Use formResponse, not viewform
-            form.method = "POST";
-            form.target = "_blank";
+            // Create a FormData object from the form
+            const formData = new FormData(document.getElementById('optInForm'));
 
-            // Append form data using correct entry names
-            const fields = [
-                'entry.493883867', // First Name
-                'entry.177051161', // Last Name
-                'entry.711119156', // Email
-                'entry.453706432', // Gender
-                'entry.1226615673', // City
-                'entry.458008119' // Country
-            ];
-            
-            fields.forEach(field => {
-                const input = document.createElement('input');
-                input.type = 'hidden';
-                input.name = field;
-                input.value = document.getElementsByName(field)[0].value || ""; // Get the input value
-                form.appendChild(input);
-            });
-
-            // Append the form to the body and submit it
-            document.body.appendChild(form);
-            form.submit();
-
-            // Redirect after a slight delay to ensure form submission completes
-            setTimeout(() => {
+            // Send the form data to Google Forms using fetch
+            fetch("https://docs.google.com/forms/d/e/1FAIpQLSdVwup9Zy2PVfjHm7C1HTA_uHs6jxbByM5_KiduOXDEW7fR1w/formResponse", {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors' // This is important to avoid redirecting
+            })
+            .then(() => {
+                // Redirect to another website after submission
                 window.location.href = "https://rileymarker.com/Winiphone14plusnow"; // Replace with your desired redirect URL
-            }, 1000);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was a problem with your submission.'); // Error handling
+            });
         }
     </script>
 </head>
